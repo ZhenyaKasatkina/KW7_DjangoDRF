@@ -1,0 +1,51 @@
+[
+  {
+    "model": "habits.daysofweek",
+    "pk": 1,
+    "fields": {
+      "name": "пн"
+    }
+  },
+  {
+    "model": "habits.daysofweek",
+    "pk": 2,
+    "fields": {
+      "name": "вт"
+    }
+  },
+  {
+    "model": "habits.daysofweek",
+    "pk": 3,
+    "fields": {
+      "name": "ср"
+    }
+  },
+  {
+    "model": "habits.daysofweek",
+    "pk": 4,
+    "fields": {
+      "name": "чт"
+    }
+  },
+  {
+    "model": "habits.daysofweek",
+    "pk": 5,
+    "fields": {
+      "name": "пт"
+    }
+  },
+  {
+    "model": "habits.daysofweek",
+    "pk": 6,
+    "fields": {
+      "name": "сб"
+    }
+  },
+  {
+    "model": "habits.daysofweek",
+    "pk": 7,
+    "fields": {
+      "name": "вс"
+    }
+  }
+]
