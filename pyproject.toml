@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "kw7-djangodrf"
+version = "0.1.0"
+description = ""
+authors = ["ZhenyaKasatkina <knopisha.zh@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11"
+django = "^5.0.6"
+psycopg2-binary = "^2.9.9"
+djangorestframework = "^3.15.2"
+python-dotenv = "^1.0.1"
+pillow = "^10.3.0"
+djangorestframework-simplejwt = "^5.3.1"
+django-cors-headers = "^4.4.0"
+celery = "^5.4.0"
+requests = "^2.32.3"
+redis = "^5.0.6"
+drf-yasg = "^1.21.7"
+coverage = "^7.5.4"
+flake8 = "^7.1.0"
+black = "^24.4.2"
+isort = "^5.13.2"
+django-celery-beat = "^2.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
