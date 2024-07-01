@@ -8,7 +8,6 @@ class HabitSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
 
     def validate(self, attrs):
-        # print(attrs)
 
         if "associated_habit" in attrs:
             if not attrs["associated_habit"].is_enjoyable:

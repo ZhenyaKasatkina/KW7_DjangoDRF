@@ -43,5 +43,4 @@ class HabitUpdateAPIView(UpdateAPIView):
 
 
 class HabitDestroyAPIView(DestroyAPIView):
-    # serializer_class = HabitSerializer
     queryset = Habit.objects.all()

@@ -13,7 +13,6 @@ class UsersTestCase(APITestCase):
         self.user = User.objects.create(
             email="new_email@list.ru", password="123q"
         )
-        # print(self.user)
 
         self.client.force_authenticate(user=self.user)
 
@@ -26,7 +25,6 @@ class UsersTestCase(APITestCase):
         )
         data = {"email": "em@list.ru", "password": "123qwe"}
         response = self.client.post(url, data=data)
-        # print(response.json())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(User.objects.all().count(), 2)
 
