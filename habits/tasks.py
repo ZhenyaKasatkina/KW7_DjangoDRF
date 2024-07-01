@@ -36,23 +36,18 @@ def send_reminder_email():
     zone = pytz.timezone(settings.TIME_ZONE)
     # текущие дата и время
     current_datetime = datetime.now(zone)
-    # print(current_datetime)
     # день недели, начинается с 1
     day_of_week = current_datetime.weekday() + 1
-    # print(f'привет! {day_of_week}')
     users = User.objects.all()
     for user in users:
         if user.tg_chat_id:
             # создание объекта рассылки, время отправки которого наступило
             habits = Habit.objects.filter(owner=user)
             for habit in habits:
-                # print(habit)
-                # print(habit.days.filter(pk=day_of_week), habit.days.all())
                 if (
                     habit.days.filter(pk=day_of_week)
                     and habit.start_time.hour == current_datetime.hour
                     and (habit.start_time.minute - 5) == current_datetime.minute
                 ):
-                    # print(day_of_week)
                     message = f"Напоминаю! Необходимо: {habit}."
                     send_telegram_message(user.tg_chat_id, message)

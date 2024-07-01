@@ -15,11 +15,7 @@ class HabitsTestCase(APITestCase):
 
         super().setUp()
         self.user = User.objects.create(email="new_email@list.ru")
-        # print(self.user, self.user.pk)
-        # management.call_command("loaddata", "days.json")
         management.call_command(loaddata.Command(), "days.json")
-        # print(DaysOfWeek.objects.all())
-
         self.enjoyable_habit = Habit.objects.create(
             owner=self.user,
             place="на работе",
@@ -32,8 +28,6 @@ class HabitsTestCase(APITestCase):
         )
         self.enjoyable_habit.save()
         self.enjoyable_habit.days.add(6, 7)
-        # print(self.enjoyable_habit,
-        # self.enjoyable_habit.days.filter(habit=self.enjoyable_habit))
 
         self.client.force_authenticate(user=self.user)
 
@@ -52,7 +46,6 @@ class HabitsTestCase(APITestCase):
             "time_to_complete": 120,
         }
         response = self.client.post(url, data)
-        # print(response.json())
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Habit.objects.all().count(), 2)
 
@@ -119,7 +112,6 @@ class HabitsTestCase(APITestCase):
             "time_to_complete": 120,
         }
         response = self.client.post(url, data)
-        # print(response)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Habit.objects.all().count(), 1)
 
@@ -134,7 +126,6 @@ class HabitsTestCase(APITestCase):
             "time_to_complete": 120,
         }
         response = self.client.post(url, data)
-        # print(response)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Habit.objects.all().count(), 1)
 
@@ -164,7 +155,6 @@ class HabitsTestCase(APITestCase):
         url = reverse("habits:habit_update", args=(self.enjoyable_habit.pk,))
         data = {"reward": "null", "time_to_complete": 120}
         response = self.client.put(url, data)
-        # print(response.json())
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(self.enjoyable_habit.reward, None)
 
@@ -173,7 +163,6 @@ class HabitsTestCase(APITestCase):
 
         url = reverse("habits:habit_delete", args=(self.enjoyable_habit.pk,))
         response = self.client.delete(url)
-        # print(response)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Habit.objects.all().count(), 0)
 
@@ -182,7 +171,6 @@ class HabitsTestCase(APITestCase):
 
         url = reverse("habits:habit_delete", args=(101,))
         response = self.client.delete(url)
-        # print(response)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(Habit.objects.all().count(), 1)
 
@@ -213,7 +201,6 @@ class HabitsTestCase(APITestCase):
                 },
             ],
         }
-        # print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(data, result)
 
@@ -244,7 +231,6 @@ class HabitsTestCase(APITestCase):
                 },
             ],
         }
-        # print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(data, result)
 
